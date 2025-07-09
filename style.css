@@ -912,17 +912,7 @@ header {
 .lightbox-prev { left: 20px; }
 .lightbox-next { right: 20px; }
 
-/* Responsif */
-@media (max-width: 768px) {
-    .exploration-header h1 { font-size: 40px; }
-    .marquee-track { width: calc(320px * 12); }
-    .marquee-track img { width: 300px; }
-    .achievements-header {
-        flex-direction: column; /* Mengubah tatanan jadi vertikal */
-        align-items: flex-start; /* Meratakan semua item ke kiri */
-        gap: 20px; /* Memberi jarak antara judul dan panah */
-    }
-}
+
 
 /* ======================= SKILLS SECTION ======================= */
 
@@ -1127,52 +1117,10 @@ footer {
     font-size: 14px;
 }
 
-/* Responsif untuk Footer */
-@media (max-width: 768px) {
-    .footer-marquee h1 { font-size: 100px; }
-    .footer-content { flex-direction: column; gap: 30px; }
-}
 
 
-/* --- Responsif untuk Projects Section (SUDAH DIPERBAIKI) --- */
-@media (max-width: 1024px) {
-    #projects { padding: 80px 40px; }
-    .project-card, .project-card-reverse {
-        flex-direction: column;
-        gap: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    #projects { padding: 80px 25px; }
-    .projects-header h1 { font-size: 40px; }
-    .projects-header p { font-size: 18px; }
-    /* ATURAN .project-card { display: none; } TELAH DIHAPUS */
-}
 
 
-/* --- Responsif untuk About Section --- */
-@media (max-width: 992px) {
-    .about-container {
-        flex-direction: column; /* Stack kolom secara vertikal */
-        gap: 60px;
-    }
-
-    .about-left {
-        flex-direction: row; /* Jejerkan judul dan CV link */
-        align-self: auto;
-        width: 100%;
-    }
-}
-
-@media (max-width: 576px) {
-    #about {
-        padding: 80px 25px;
-    }
-    .about-right p {
-        font-size: 24px;
-    }
-}
 
 /* ======================= HAMBURGER MENU STYLING ======================= */
 .hamburger-menu {
@@ -1205,38 +1153,36 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+/* =================================================================== */
+/* MEDIA QUERIES (RESPONSIVE) - FINAL VERSION                        */
+/* =================================================================== */
 
-/* ======================= RESPONSIVE DESIGN ======================= */
+/* Untuk Layar Tablet Besar (<= 1200px) */
 @media (max-width: 1200px) {
     .hero-container {
         gap: 60px;
-        align-items: center; /* Pusatkan item saat ruang terbatas */
+        align-items: center;
     }
-
     .hero-left {
         height: auto;
         justify-content: center;
         gap: 60px;
-        width: auto; /* TAMBAHKAN INI */
-    }
-    .hero-title {
-        font-size: 40px;
-        min-height: 80px;
-    }
-    .hero-right {
-        padding-bottom: 0;
+        width: auto;
     }
 }
 
+
+
+/* Untuk Layar Tablet Vertikal (<= 992px) */
 @media (max-width: 992px) {
-    /* Aturan untuk menu overlay */
+    /* Navigasi */
     .nav-links {
         position: fixed;
-        left: -100%; /* Sembunyikan di luar layar kiri */
+        left: -100%;
         top: 0;
         gap: 0;
         flex-direction: column;
-        background-color: #0c0c0c; /* Sedikit lebih terang untuk membedakan */
+        background-color: #0c0c0c;
         width: 100%;
         height: 100%;
         text-align: center;
@@ -1244,62 +1190,169 @@ footer {
         justify-content: center;
         z-index: 1000;
     }
-
-    /* Aturan untuk link di dalam menu overlay */
-    .nav-links a {
-        margin: 16px 0;
-        font-size: 20px;
-        opacity: 1;
-    }
+    .nav-links a { margin: 16px 0; font-size: 20px; opacity: 1; }
+    .nav-links.active { left: 0; }
+    .contact-btn { display: none; }
+    .hamburger-menu { display: block; }
     
-    /* Kelas .active untuk menampilkan menu */
-    .nav-links.active {
-        left: 0;
-    }
-
-    /* Sembunyikan tombol kontak utama di mobile */
-    .contact-btn {
-        display: none; 
-    }
-
-    /* Tampilkan ikon hamburger di mobile */
-    .hamburger-menu {
-        display: block;
-    }
-
-    /* Aturan lama yang masih relevan */
+    /* Hero Section */
     .hero-container {
         flex-direction: column;
         align-items: flex-start;
         padding: 80px 60px;
-        background-image: url('assets/cahaya.png'), url('assets/pattern.png');
-        background-position: top left, top right;
-        background-repeat: no-repeat, no-repeat;
-        /* TAMBAHKAN ATAU UBAH BARIS DI BAWAH INI */
-        background-size: 800px, 500px; /* Contoh: Pattern dikecilkan jadi 50% */
+        background-size: 500px, 700px; 
     }
-    .hero-right {
-        max-width: 100%;
+    .hero-right { max-width: 100%; }
+
+    /* About Section */
+    .about-container {
+        flex-direction: column;
+        gap: 40px;
     }
-    .hero-title {
-        font-size: 80px;
-        min-height: 160px;
+    .about-left {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+    }
+    .about-right p {
+        font-size: 26px;
     }
 }
 
-@media (max-width: 576px) {
-    .nav-container { padding: 0 15px; }
-    .contact-btn { font-size: 14px; padding: 8px 12px; }
+/* Untuk Layar Mobile Besar (<= 768px) */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero-title { font-size: 80px; min-height: 0; }
 
-    .hero-container {
-        padding: 60px 25px;
+    /* Projects & Exploration */
+    .projects-container { padding: 100px 25px; }
+    #exploration { padding: 100px 0; }
+    .projects-header h1, .exploration-header h1 { font-size: 40px; white-space: normal; }
+    .projects-header p, .exploration-header p { font-size: 18px; }
+    .project-links {
+        flex-direction: column;   /* Mengubah tatanan jadi ke bawah */
+        align-items: flex-start;  /* Membuat tombol rata kiri */
+        gap: 20px;                /* Mengatur jarak antar tombol */
+        margin-top: 20px;         /* Mengurangi jarak dari konten di atasnya */
     }
+    #projects::before {
+        background-size: 120%;
+
+    /* Marquee */
+    .marquee-track { width: calc(320px * 12); }
+    .marquee-track img { width: 300px; }
+
+    /* Achievements Section */
+    #achievements {
+        padding: 100px 0;
+    }
+    .achievements-container {
+        padding: 0 25px;
+    }
+    .achievements-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+    .achievements-header h2 {
+        font-size: 36px;
+    }
+    /* Menyembunyikan panah navigasi slider */
+    .slider-nav {
+        display: none;
+    }
+
+    /* Skills */
+    #skills { padding: 100px 25px; }
+    .skills-container h1 { font-size: 36px; }
+    }
+}
+
+/* Untuk Layar Mobile Kecil (<= 576px) */
+@media (max-width: 576px) {
+    /* Navigasi */
+    .nav-container { padding: 0 15px; }
+
+    /* Hero Section */
+    .hero-container { padding: 60px 25px; }
+    .hero-title { font-size: 54px; }
+    .hero-right p { font-size: 16px; }
+
+    /* About Section */
+    #about { padding: 80px 25px; }
+    .about-right p { font-size: 22px; }
+    .about-left { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 30px;
+    }
+     /* Perkecil font di section About */
+    .section-title p,
+    .cv-link {
+        font-size: 18px; /* Atur ukuran font menjadi 18px */
+    }
+
+    /* Menambahkan garis bawah hanya di mobile */
+    .cv-link {
+        border-bottom: 2px solid #020202;
+        padding-bottom: 4px;
+    }
+    
+    /* Footer */
+    .footer-bottom { padding: 40px 25px; }
+    .footer-content { flex-direction: column; gap: 30px; }
+}
+
+/* Untuk Layar Mobile Sangat Kecil (<= 480px) */
+@media (max-width: 480px) {
+    /* Padding global untuk section di mobile kecil */
+    #about, .projects-container, #skills, .achievements-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    #hero .hero-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Perkecil judul-judul utama */
     .hero-title {
-        font-size: 54px;
-        min-height: 110px;
+        font-size: 44px; /* Lebih kecil lagi dari sebelumnya */
     }
-    .hero-right p {
+    .projects-header h1, .exploration-header h1, .skills-container h1, .achievements-header h2 {
+        font-size: 32px;
+        line-height: 1.3;
+    }
+
+    /* Perkecil font deskripsi */
+    .about-right p {
+        font-size: 18px;
+    }
+    .projects-header p, .exploration-header p {
         font-size: 16px;
     }
+
+    /* Perkecil tombol */
+    .btn-primary, .btn-dribbble, .btn-behance {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    /* Perkecil kartu project */
+    .project-card {
+        padding: 25px;
+    }
+    .project-info h2 {
+        font-size: 20px;
+    }
 }
 
+/* Untuk Layar Tablet & Laptop Kecil (<= 1024px) */
+@media (max-width: 1024px) {
+    /* Projects Section */
+    .project-card, .project-card-reverse {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
